@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NUBO - Refacciones Automotrices</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-content">
+        <h1>NUBO — Refacciones para tu auto al mejor precio</h1>
+        <p>Aceites, frenos, baterías y más. Envío gratis en compras mayores a $500.</p>
+      </div>
+    </section>
+
+    <section class="categories-bar">
+      <div class="container">
+        <div class="categories-list" id="categories-list"></div>
+      </div>
+    </section>
+
+    <section class="products-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Catálogo de productos</h2>
+          <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+            <span class="products-count" id="products-count">0 productos</span>
+            <div class="price-filter">
+              <label>Precio:</label>
+              <input type="number" id="price-min" placeholder="Mín" min="0">
+              <span>—</span>
+              <input type="number" id="price-max" placeholder="Máx" min="0">
+            </div>
+          </div>
+        </div>
+        <div class="products-grid" id="products-grid">
+          <div class="empty-state" style="grid-column: 1/-1">
+            <p>Cargando productos...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <div class="modal-overlay" id="product-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modal-title">Producto</h3>
+        <button class="modal-close" id="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-product-image" id="modal-image"></div>
+        <span class="product-card-brand" id="modal-brand"></span>
+        <div class="modal-product-price" id="modal-price"></div>
+        <p class="modal-product-desc" id="modal-desc"></p>
+        <div id="modal-compat"></div>
+        <p class="modal-product-stock in-stock" id="modal-stock"></p>
+        <button class="btn btn-primary btn-block btn-lg" id="modal-add-cart">Agregar al carrito</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script>
+    document.getElementById('header-placeholder').innerHTML = renderHeader('home');
+    document.getElementById('footer-placeholder').innerHTML = renderFooter();
+    initHeader();
+    updateCartBadge();
+  </script>
+  <script src="js/catalog.js"></script>
+</body>
+</html>

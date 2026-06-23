@@ -1,0 +1,10 @@
+exclude:
+  - backend
+  - database
+  - data
+  - docs
+  - node_modules
+  - scripts
+  - package.json
+  - package-lock.json
+  - README.md

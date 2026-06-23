@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - NUBO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main>
+    <div class="container page-content">
+      <div class="page-title">
+        <h1>Finalizar compra</h1>
+      </div>
+
+      <div class="checkout-steps" id="shop-progress"></div>
+
+      <div class="checkout-layout">
+        <div class="checkout-main">
+          <div class="checkout-panel active">
+            <form id="checkout-form">
+              <section class="form-section hidden" id="checkout-address-options">
+                <h2>Elige dónde recibir tu pedido</h2>
+                <div class="checkout-choice-grid" id="saved-address-options"></div>
+              </section>
+
+              <section class="form-section" id="shipping-form-section">
+                <h2 id="shipping-form-title">Datos de domicilio de envío</h2>
+                <div class="form-group">
+                  <label for="ship-name">Nombre completo de quien recibe</label>
+                  <input type="text" id="ship-name" placeholder="Nombre completo" autocomplete="name">
+                  <span class="form-error" id="error-nombre"></span>
+                </div>
+                <div class="form-group">
+                  <label for="ship-phone">Teléfono de contacto</label>
+                  <input type="tel" id="ship-phone" placeholder="10 dígitos" autocomplete="tel">
+                  <span class="form-error" id="error-telefono"></span>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="ship-street">Calle</label>
+                    <input type="text" id="ship-street" placeholder="Nombre de la calle" autocomplete="address-line1">
+                    <span class="form-error" id="error-calle"></span>
+                  </div>
+                  <div class="form-group">
+                    <label for="ship-ext">No. exterior</label>
+                    <input type="text" id="ship-ext" placeholder="123" autocomplete="address-line2">
+                    <span class="form-error" id="error-numExt"></span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="ship-int">No. interior <span class="label-hint">(opcional)</span></label>
+                  <input type="text" id="ship-int" placeholder="Depto, piso, etc.">
+                  <span class="form-error" id="error-numInt"></span>
+                </div>
+                <div class="form-group">
+                  <label for="ship-colonia">Colonia / barrio</label>
+                  <input type="text" id="ship-colonia" placeholder="Colonia o fraccionamiento">
+                  <span class="form-error" id="error-colonia"></span>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="ship-city">Municipio / ciudad</label>
+                    <input type="text" id="ship-city" placeholder="Ciudad o municipio" autocomplete="address-level2">
+                    <span class="form-error" id="error-municipio"></span>
+                  </div>
+                  <div class="form-group">
+                    <label for="ship-state">Estado</label>
+                    <input type="text" id="ship-state" placeholder="Estado" autocomplete="address-level1">
+                    <span class="form-error" id="error-estado"></span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="ship-zip">Código postal</label>
+                  <input type="text" id="ship-zip" placeholder="00000" maxlength="5" autocomplete="postal-code">
+                  <span class="form-error" id="error-cp"></span>
+                </div>
+                <div class="checkout-save-option" id="save-address-option">
+                  <label><input type="checkbox" id="save-new-address"> Guardar esta dirección en mi cuenta</label>
+                  <input type="text" id="new-address-label" maxlength="50" placeholder="Nombre: Casa, Oficina...">
+                </div>
+              </section>
+
+              <section class="form-section">
+                <h2>Método de pago</h2>
+                <div class="payment-options">
+                  <label class="payment-option selected">
+                    <input type="radio" name="payment" value="tarjeta" checked>
+                    <span class="payment-option-icon">💳</span>
+                    <div class="payment-option-info">
+                      <strong>Tarjeta de crédito o débito</strong>
+                      <span>Visa, Mastercard, American Express</span>
+                    </div>
+                  </label>
+                  <label class="payment-option">
+                    <input type="radio" name="payment" value="transferencia">
+                    <span class="payment-option-icon">🏦</span>
+                    <div class="payment-option-info">
+                      <strong>Transferencia bancaria</strong>
+                      <span>SPEI - Recibirás los datos al confirmar</span>
+                    </div>
+                  </label>
+                  <label class="payment-option">
+                    <input type="radio" name="payment" value="efectivo">
+                    <span class="payment-option-icon">💵</span>
+                    <div class="payment-option-info">
+                      <strong>Efectivo contra entrega</strong>
+                      <span>Paga al recibir tu pedido</span>
+                    </div>
+                  </label>
+                </div>
+              </section>
+
+              <section class="form-section" id="card-section">
+                <h2>Tarjeta</h2>
+                <p class="form-note">El número completo y el CVV nunca se almacenan. Al guardar una tarjeta sólo conservamos marca, vencimiento y últimos cuatro dígitos.</p>
+                <div class="checkout-choice-grid checkout-saved-payments" id="saved-payment-options"></div>
+                <div id="new-card-fields">
+                  <div class="form-group">
+                    <label for="card-holder">Nombre del titular de la tarjeta</label>
+                    <input type="text" id="card-holder" placeholder="Como aparece en la tarjeta" autocomplete="cc-name">
+                    <span class="form-error" id="error-titular"></span>
+                  </div>
+                  <div class="form-group">
+                    <label for="card-number">Número de tarjeta</label>
+                    <input type="text" id="card-number" placeholder="0000 0000 0000 0000" maxlength="19" inputmode="numeric" autocomplete="cc-number">
+                    <span class="form-error" id="error-tarjeta"></span>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="card-exp">Fecha de vencimiento</label>
+                      <input type="text" id="card-exp" placeholder="MM/AA" maxlength="5" autocomplete="cc-exp">
+                      <span class="form-error" id="error-vencimiento"></span>
+                    </div>
+                    <div class="form-group">
+                      <label for="card-cvv">CVV / código de seguridad</label>
+                      <input type="password" id="card-cvv" placeholder="123" maxlength="4" inputmode="numeric" autocomplete="cc-csc">
+                      <span class="form-error" id="error-cvv"></span>
+                    </div>
+                  </div>
+                  <div class="checkout-save-option">
+                    <label><input type="checkbox" id="save-new-payment"> Guardar esta tarjeta en mi cuenta</label>
+                    <input type="text" id="new-payment-label" maxlength="50" placeholder="Nombre: Personal, Nómina...">
+                  </div>
+                </div>
+              </section>
+            </form>
+
+            <button class="btn btn-primary btn-lg btn-block" id="btn-confirm-order" style="margin-top: 1.5rem">
+              Confirmar pedido
+            </button>
+          </div>
+        </div>
+
+        <div class="summary-card" id="checkout-summary"></div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    document.getElementById('header-placeholder').innerHTML = renderHeader();
+    document.getElementById('footer-placeholder').innerHTML = renderFooter();
+    initHeader();
+    updateCartBadge();
+  </script>
+  <script src="js/cart.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>

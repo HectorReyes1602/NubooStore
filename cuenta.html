@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi cuenta - NUBO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main>
+    <section class="account-hero">
+      <div class="container">
+        <span class="account-eyebrow">Área personal</span>
+        <h1 id="account-page-title">Mi cuenta</h1>
+        <p id="account-page-subtitle">Consulta y administra la información de tus compras.</p>
+      </div>
+    </section>
+
+    <div class="container account-page">
+      <nav class="account-section-nav" aria-label="Secciones de mi cuenta">
+        <a href="cuenta.html" data-account-section="resumen"><i class="fa-solid fa-gauge-high"></i> Resumen</a>
+        <a href="cuenta.html?section=compras" data-account-section="compras"><i class="fa-solid fa-bag-shopping"></i> Compras</a>
+        <a href="cuenta.html?section=direcciones" data-account-section="direcciones"><i class="fa-solid fa-location-dot"></i> Direcciones</a>
+        <a href="cuenta.html?section=facturacion" data-account-section="facturacion"><i class="fa-solid fa-credit-card"></i> Métodos de pago</a>
+        <a href="cuenta.html?section=perfil" data-account-section="perfil"><i class="fa-solid fa-user-gear"></i> Mi cuenta</a>
+      </nav>
+      <section id="account-content" class="account-content" aria-live="polite">
+        <div class="account-loading"><i class="fa-solid fa-circle-notch fa-spin"></i><span>Cargando tu información...</span></div>
+      </section>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    document.getElementById('header-placeholder').innerHTML = renderHeader();
+    document.getElementById('footer-placeholder').innerHTML = renderFooter();
+    initHeader();
+    updateCartBadge();
+  </script>
+  <script src="js/account.js"></script>
+</body>
+</html>

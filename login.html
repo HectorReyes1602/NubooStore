@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar sesión - NUBO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main>
+    <div class="auth-page">
+      <div class="auth-card">
+        <div class="auth-card-inner">
+          <h2>Bienvenido</h2>
+          <p class="auth-subtitle">Accede a tu cuenta para comprar refacciones</p>
+
+          <div class="auth-tabs">
+            <button class="auth-tab active" data-tab="login">Iniciar sesión</button>
+            <button class="auth-tab" data-tab="register">Crear cuenta</button>
+          </div>
+
+          <div class="auth-panel active" id="panel-login">
+            <div class="form-error" id="login-error"></div>
+            <form id="login-form">
+              <div class="form-group">
+                <label for="login-email">Correo electrónico</label>
+                <input type="email" id="login-email" placeholder="correo@ejemplo.com" autocomplete="username">
+              </div>
+              <div class="form-group">
+                <label for="login-pass">Contraseña</label>
+                <input type="password" id="login-pass" placeholder="Tu contraseña" autocomplete="current-password">
+              </div>
+              <button type="submit" class="btn btn-primary btn-block btn-lg">Ingresar</button>
+            </form>
+            <button type="button" class="auth-link" id="show-recovery">¿Olvidaste tu contraseña?</button>
+          </div>
+
+          <div class="auth-panel" id="panel-register">
+            <div class="form-error" id="register-error"></div>
+            <form id="register-form">
+              <p class="form-section-desc">Datos de registro de usuario</p>
+              <div class="form-group">
+                <label for="reg-name">Nombre completo</label>
+                <input type="text" id="reg-name" placeholder="Ej. María García López" autocomplete="name" minlength="3" maxlength="100" required>
+              </div>
+              <div class="form-group">
+                <label for="reg-email">Correo electrónico <span class="label-hint">(identificador único)</span></label>
+                <input type="email" id="reg-email" placeholder="correo@ejemplo.com" autocomplete="email" maxlength="254" pattern="[a-zA-Z0-9._%+\-]+@(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,63}" title="Usa un correo completo, por ejemplo: nombre@dominio.com" required>
+              </div>
+              <div class="form-group">
+                <label for="reg-pass">Contraseña</label>
+                <div class="password-input-wrap">
+                  <input type="password" id="reg-pass" placeholder="Mínimo 8 caracteres, letras y números" autocomplete="new-password" minlength="8" maxlength="72" required>
+                  <button type="button" class="password-toggle" data-password-toggle="reg-pass" aria-label="Mostrar contraseña" aria-pressed="false">
+                    <i class="fa-regular fa-eye" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="reg-confirm">Confirmar contraseña</label>
+                <div class="password-input-wrap">
+                  <input type="password" id="reg-confirm" placeholder="Repite tu contraseña" autocomplete="new-password" minlength="8" maxlength="72" required>
+                  <button type="button" class="password-toggle" data-password-toggle="reg-confirm" aria-label="Mostrar contraseña" aria-pressed="false">
+                    <i class="fa-regular fa-eye" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block btn-lg">Crear cuenta</button>
+            </form>
+          </div>
+
+          <div class="auth-panel" id="panel-recovery">
+            <button type="button" class="auth-link auth-link-back" id="back-to-login">← Volver al inicio de sesión</button>
+            <h3>Recuperar contraseña</h3>
+            <p class="form-section-desc">Te enviaremos un código de seis números a tu correo.</p>
+            <div class="form-error" id="recovery-error"></div>
+            <form id="forgot-form">
+              <div class="form-group">
+                <label for="recovery-email">Correo electrónico</label>
+                <input type="email" id="recovery-email" placeholder="correo@ejemplo.com" autocomplete="email">
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Enviar código</button>
+            </form>
+            <form id="reset-form" class="reset-form hidden">
+              <div class="form-group">
+                <label for="recovery-code">Código de seis números</label>
+                <input type="text" id="recovery-code" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" placeholder="000000" autocomplete="one-time-code">
+              </div>
+              <div class="form-group">
+                <label for="recovery-password">Nueva contraseña</label>
+                <input type="password" id="recovery-password" placeholder="Mínimo 8 caracteres, letras y números" autocomplete="new-password">
+              </div>
+              <div class="form-group">
+                <label for="recovery-confirm">Confirmar contraseña</label>
+                <input type="password" id="recovery-confirm" placeholder="Repite la contraseña" autocomplete="new-password">
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Cambiar contraseña</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    document.getElementById('header-placeholder').innerHTML = renderHeader();
+    initHeader();
+    updateCartBadge();
+  </script>
+</body>
+</html>

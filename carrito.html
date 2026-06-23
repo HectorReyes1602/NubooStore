@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito - NUBO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main>
+    <div class="container page-content">
+      <div class="page-title">
+        <h1>🛒 Mi carrito</h1>
+      </div>
+
+      <div class="checkout-steps" id="shop-progress"></div>
+
+      <div class="two-column">
+        <div id="cart-items">
+          <div class="empty-state">
+            <p>Cargando carrito...</p>
+          </div>
+        </div>
+        <div class="summary-card" id="cart-summary" style="display: none;"></div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    document.getElementById('header-placeholder').innerHTML = renderHeader();
+    document.getElementById('footer-placeholder').innerHTML = renderFooter();
+    initHeader();
+    updateCartBadge();
+  </script>
+  <script src="js/cart.js"></script>
+</body>
+</html>
